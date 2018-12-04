@@ -1,0 +1,3 @@
+make compila
+./run.sh executa
+make clean apaga a pasta build e os arquivos de socket e os executaveis
