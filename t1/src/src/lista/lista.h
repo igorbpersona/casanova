@@ -12,7 +12,6 @@
 
 typedef struct List_block {
     unsigned char data[LIST_BLOCK_SIZE];
-    void *align1, *align2, *align3;
     struct List_block *next;
 } lista_block_t;
 
