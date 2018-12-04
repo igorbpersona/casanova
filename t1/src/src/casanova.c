@@ -24,6 +24,9 @@
 #define PUT_THREADS 4
 #define GET_THREADS 8
 
+#define PUT_MSG_QTY 680;
+#define GET_MSG_QTY 546;
+
 /* Chave utilizada, obviamente não é seguro coloca-la aqui em
    plain text, mas isso é apenas um toy */
 unsigned char *key = (unsigned char *)"01234567890123456789012345678901";
@@ -72,8 +75,8 @@ int get_working[GET_THREADS];
 int get_mavail[GET_THREADS];
 int put_mavail[PUT_THREADS];
 
-char put_buffer[PUT_THREADS][PUT_MESSAGE_SIZE*680]; // Buffer da thread [id]
-char get_buffer[GET_THREADS][GET_MESSAGE_SIZE*546]; // Buffer da thread de leitura
+char put_buffer[PUT_THREADS][PUT_MESSAGE_SIZE*PUT_MSG_QTY]; // Buffer da thread [id]
+char get_buffer[GET_THREADS][GET_MESSAGE_SIZE*GET_MSG_QTY]; // Buffer da thread de leitura
 
 long long int put_actual[PUT_THREADS]; // enor id do bloco que esta sendo escrito, quando o bloco é escrito passa a ser o ultimo id do bloco
 int get_waiting[GET_THREADS]; // Diz se a thread esta espearndo no semafaro, provavelmente poderiamos ler o semafaro ou sempre dar post
@@ -560,6 +563,3 @@ int decrypt(EVP_CIPHER_CTX * ctxd, unsigned char *ciphertext, int ciphertext_len
 
     return plaintext_len;
 }
-
-
-
